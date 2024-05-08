@@ -1,5 +1,7 @@
 # Perplextual-Machine
 
+**Python-Based IDEs or Multi-Programming IDEs needed to run the script!**
+
 **Compatible for any devices, either handheld (Android, iOS), or computer-based (Windows, Linux, macOS). For Linux-Distro OS-es, you may have to have a tool like WINE, or any that support to run Microsoft Excel.**
 
 This repository focuses on a **Perpetual Gregorian Calendar** with direct conversion to other well-known calendars in the world.

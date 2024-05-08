@@ -7,8 +7,15 @@
 Recommended for each builds:
 
 Android --> **PyDroid3**
+
 iOS --> **PyTo3 or Pythonista 3**
+
 Windows, Linux, or macOS --> **VSCode or Sublime Text**
+
+
+
+
+
 
 This repository focuses on a **Perpetual Gregorian Calendar** with direct conversion to other well-known calendars in the world.
 

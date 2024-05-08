@@ -1,8 +1,14 @@
 # Perplextual-Machine
 
-**Python-Based IDEs or Multi-Programming IDEs needed to run the script!**
+**Python3-Based IDEs or Multi-Programming IDEs needed to run the script!**
 
 **Compatible for any devices, either handheld (Android, iOS), or computer-based (Windows, Linux, macOS). For Linux-Distro OS-es, you may have to have a tool like WINE, or any that support to run Microsoft Excel.**
+
+Recommended for each builds:
+
+Android --> **PyDroid3**
+iOS --> **PyTo3 or Pythonista 3**
+Windows, Linux, or macOS --> **VSCode or Sublime Text**
 
 This repository focuses on a **Perpetual Gregorian Calendar** with direct conversion to other well-known calendars in the world.
 
@@ -27,7 +33,7 @@ This is the Excel spreadsheet file as an assist to determine the 1st to 52nd/53r
 
 
 
-========================================================================
+
 
 
 

@@ -46,8 +46,6 @@ This is the Excel spreadsheet file as an assist to determine the 1st to 52nd/53r
 
 ## Additional Notes
 
-1. In **r.py**, there is a bunch additional fictive-occurrences like Kailedoscope Awards, Super-Sunday, etc. (e.g that ends with 01A, 02B, 09-09 day). Those are used as example for application of Gregorian-Calendar specified locator oriented.
+1. In the _**line calendar mode**_ at **r.py**, a Hijri-date in format ( [H] - YYYY - MM - 01 ) will be shown either **1 up to (8 or 9) times consecutively** due to some applications of hijri date offsetting. This also applies to Chinese calendars but you need to print in the _**occurrences only mode**_ list by at least leaving **1 (one) calendar day up to 2 (two) beginning of Hijri dates below its referenced first-day**.
 
-2. In the line calendar mode at the same file as note #1, a Hijri-date in format ( [H] - YYYY - MM - 01 ) will be shown either **8 or 9 times in a row** due to some applications of hijri date offsetting. This also applies to Chinese calendars when printing occurrences only list by at least a gap of **1 (one) calendar day up to 2 (two)**.
-
-3. All the dates are written at least 4-digit year format, and 2-digitter for months and days of the month
+2. All the dates are written at least 4-digit year format, and 2-digitter for months and days of the month

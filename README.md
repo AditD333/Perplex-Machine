@@ -51,6 +51,7 @@ This is the Excel spreadsheet file as an assist to determine the 1st to 52nd/53r
   Example:
 
   Lunar First Day Of The Month
+  
   [H] YYYY - MM - DD [In format from 27.02xx - 6.399xx]
   
 

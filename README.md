@@ -4,7 +4,7 @@
 
 **Compatible for any devices, either handheld (Android, iOS), or computer-based (Windows, Linux, macOS). For Linux-Distro OS-es, you may have to have a tool like WINE, or any that support to run Microsoft Excel.**
 
-Recommended for each builds:
+Recommended for each of the build:
 
 Android --> **PyDroid3**
 
@@ -55,4 +55,9 @@ This is the Excel spreadsheet file as an assist to determine the 1st to 52nd/53r
   [H] YYYY - MM - DD [In format from 27.02xx - 6.399xx]
   
 
-2. All the dates are written at least 4-digit year format, and 2-digitter for months and days of the month
+2. All the years are written by at least 4-digit year format, un-limited, EXCEPT:
+
+   - Both Quotient (Current cycle) and Remainder (Sequence part of the cycle from 00 to [N-1]) of the full year from Year-Cycle Divisor written in at least 2 digits
+   - Non-Gregorian Calendars are modulo-ed by 10^64 (10 Vigintillion, or 1 Followed by 64 zeroes)
+
+3. All the dates are written in 2 digit month and date!

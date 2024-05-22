@@ -29,7 +29,7 @@ a=32
 # 2 = 11 (or 10^1 + 1) up to 100 (or 10^2) year-cycle
 # N = (10^[N-1] + 1) up to 10^N year-cycle [Mathematical Exception for 1]
 
-k='10'
+k=
 
 
 
@@ -46,7 +46,7 @@ k='10'
 	# More than 4 = Follows the number of digits
 #4. NO NEGATIVE INPUTS AS WELL!
 
-year='2024'
+year=
 
 
 
@@ -57,7 +57,7 @@ year='2024'
 #Set to 2 to determine the week-system BASED ON WEEK 01's ENDING (JANUARY(S) 01 THROUGH 07)
 #Or set to 3 if you want that date part of the group falls on the particular Nth day of the week
 
-set_exact_position=1
+set_exact_position=
 
 
 
@@ -140,7 +140,7 @@ set_exact_position=1
 # Another example: "E54" or 'e54'
 # Meaning a calendar in which it will determine a week-system of a calendar year in which MAY(s) 05, 12, 19, AND 26, must CASTED AS THE 4TH DAY OF THE WEEK
 
-week_system=4
+week_system=
 
 
 
@@ -152,19 +152,19 @@ week_system=4
 #0 = DISABLE grid calendar (Perfect For Fancy Fonts)
 #1 = ENABLE grid calendar (Perfect For Supported CLI-Like Fonts!)
 
-show_grid_calendar=1
+show_grid_calendar=
 
 
 
 # [For Variable "cycle_format"] Extend the current cycle number or only position of the cycle? (0 for position only, or 1 for full-extended)
 
-cycle_format=1
+cycle_format=
 
 
 
 # [For "mode"] Output format: (0) Calendar only with weeklist system, or (1) Observance(s) only
 
-mode=0
+mode=
 
 
 

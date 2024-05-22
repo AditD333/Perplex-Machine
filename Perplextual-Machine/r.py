@@ -29,7 +29,7 @@ a=32
 # 2 = 11 (or 10^1 + 1) up to 100 (or 10^2) year-cycle
 # N = (10^[N-1] + 1) up to 10^N year-cycle [Mathematical Exception for 1]
 
-k=
+k='10'
 
 
 
@@ -46,7 +46,7 @@ k=
 	# More than 4 = Follows the number of digits
 #4. NO NEGATIVE INPUTS AS WELL!
 
-year=
+year='2024'
 
 
 
@@ -57,7 +57,7 @@ year=
 #Set to 2 to determine the week-system BASED ON WEEK 01's ENDING (JANUARY(S) 01 THROUGH 07)
 #Or set to 3 if you want that date part of the group falls on the particular Nth day of the week
 
-set_exact_position=
+set_exact_position=1
 
 
 
@@ -140,7 +140,7 @@ set_exact_position=
 # Another example: "E54" or 'e54'
 # Meaning a calendar in which it will determine a week-system of a calendar year in which MAY(s) 05, 12, 19, AND 26, must CASTED AS THE 4TH DAY OF THE WEEK
 
-week_system=
+week_system=4
 
 
 
@@ -152,19 +152,19 @@ week_system=
 #0 = DISABLE grid calendar (Perfect For Fancy Fonts)
 #1 = ENABLE grid calendar (Perfect For Supported CLI-Like Fonts!)
 
-show_grid_calendar=
+show_grid_calendar=1
 
 
 
 # [For Variable "cycle_format"] Extend the current cycle number or only position of the cycle? (0 for position only, or 1 for full-extended)
 
-cycle_format=
+cycle_format=1
 
 
 
 # [For "mode"] Output format: (0) Calendar only with weeklist system, or (1) Observance(s) only
 
-mode=
+mode=0
 
 
 
@@ -681,20 +681,44 @@ with open(fname,'w') as w:
 	if set_exact_position == 0:
 		w.write("Week System ---> [%s] %s" % (weekstart_letter[ord(week_system.upper())-65],weekstart_dayoftheweek[ord(week_system.upper())-65]))
 		w.write("\n\nWhere January 01 Is Casted As ---> The %s%s Day Of The Week" % (tx,tx_ordinal))
-		w.write("\n\nAnd Week %s01 Ends On ---> January %02d\n\n\n\n\n\n\n\n" % (weekstart_letter[ord(week_system.upper())-65],8-tx))
+		w.write("\n\nAnd Week %s01 Ends On ---> January %02d" % (weekstart_letter[ord(week_system.upper())-65],8-tx))
 	elif set_exact_position == 1:
 		w.write("January 01 Is Casted As ---> The %s%s Day Of The Week" % (tx,tx_ordinal))
 		w.write("\n\nWeek System Setting Result ---> [%s] %s" % (weekstart_letter[ord(week_system.upper())-65],weekstart_dayoftheweek[ord(week_system.upper())-65]))
-		w.write("\n\nWhere Week %s01 Ends On ---> January %02d\n\n\n\n\n\n\n\n" % (week_system,8-tx))
+		w.write("\n\nWhere Week %s01 Ends On ---> January %02d" % (week_system,8-tx))
 	elif set_exact_position == 2:
 		w.write("Week %s1 Ends On ---> January %02d" % (week_system,8-tx))
 		w.write("\n\nWeek System Setting Result ---> [%s] %s" % (weekstart_letter[ord(week_system.upper())-65],weekstart_dayoftheweek[ord(week_system.upper())-65]))
-		w.write("\n\nWhere January 01 Is Casted As ---> The %s%s Day Of The Week\n\n\n\n\n\n\n\n" % (tx,tx_ordinal))
+		w.write("\n\nWhere January 01 Is Casted As ---> The %s%s Day Of The Week" % (tx,tx_ordinal))
 	elif set_exact_position == 3:
 		w.write("Required Date ---> Column Starting %s %02d, As The %s%s Day Of The Week" % (c.month_name[wsx2],wsx1,wsx,tx_ordinal1))
 		w.write("\n\nWeek System Setting Result ---> [%s] %s" % (weekstart_letter[ord(week_system.upper())-65],weekstart_dayoftheweek[ord(week_system.upper())-65]))
 		w.write("\n\nWhere January 01 Is Casted As ---> The %s%s Day Of The Week" % (tx,tx_ordinal))
-		w.write("\n\nAnd Week %s01 Ends On ---> January %02d\n\n\n\n\n\n\n\n" % (week_system,8-tx))
+		w.write("\n\nAnd Week %s01 Ends On ---> January %02d" % (week_system,8-tx))
+
+	if type(year) == int:
+		if year == 1:
+			w.write("\n\nDigit Group ---> 1 (Forced 0000 - 0009)\n\n\n\n\n\n\n\n")
+		elif year == 2:
+			w.write("\n\nDigit Group ---> 2 (Forced 0000 - 0099)\n\n\n\n\n\n\n\n")
+		elif year == 3:
+			w.write("\n\nDigit Group ---> 3 (Forced 0000 - 0999)\n\n\n\n\n\n\n\n")
+		elif year == 4:
+			w.write("\n\nDigit Group ---> 4 (Normal 0000 - 9999)\n\n\n\n\n\n\n\n")
+		else:
+			w.write("\n\nDigit Group ---> %d (Adjusted By Number Of Digits)\n\n\n\n\n\n\n\n" % (year))
+	elif type(year) == str:
+		if e_real == 1:
+			w.write("\n\nDigit Group ---> 1 (Forced 0000 - 0009)\n\n\n\n\n\n\n\n")
+		elif e_real == 2:
+			w.write("\n\nDigit Group ---> 2 (Forced 0000 - 0099)\n\n\n\n\n\n\n\n")
+		elif e_real == 3:
+			w.write("\n\nDigit Group ---> 3 (Forced 0000 - 0999)\n\n\n\n\n\n\n\n")
+		elif e_real == 4:
+			w.write("\n\nDigit Group ---> 4 (Normal 0000 - 9999)\n\n\n\n\n\n\n\n")
+		else:
+			w.write("\n\nDigit Group ---> %d (Adjusted By Number Of Digits)\n\n\n\n\n\n\n\n" % (e_real))
+	
 
 	if random_trigger == 1:
 		for array in y_indicate:
@@ -706,33 +730,11 @@ with open(fname,'w') as w:
 
 	
 
-	if type(year) == int:
-		if year == 1:
-			w.write("\n\n\n\nDigit Group ---> 1 (Forced 0000 - 0009)")
-		elif year == 2:
-			w.write("\n\n\n\nDigit Group ---> 2 (Forced 0000 - 0099)")
-		elif year == 3:
-			w.write("\n\n\n\nDigit Group ---> 3 (Forced 0000 - 0999)")
-		elif year == 4:
-			w.write("\n\n\n\nDigit Group ---> 4 (Normal 0000 - 9999)")
-		else:
-			w.write("\n\n\n\nDigit Group ---> %d (Adjusted By Number Of Digits)" % (year))
-	elif type(year) == str:
-		if e_real == 1:
-			w.write("\n\n\n\nDigit Group ---> 1 (Forced 0000 - 0009)")
-		elif e_real == 2:
-			w.write("\n\n\n\nDigit Group ---> 2 (Forced 0000 - 0099)")
-		elif e_real == 3:
-			w.write("\n\n\n\nDigit Group ---> 3 (Forced 0000 - 0999)")
-		elif e_real == 4:
-			w.write("\n\n\n\nDigit Group ---> 4 (Normal 0000 - 9999)")
-		else:
-			w.write("\n\n\n\nDigit Group ---> %d (Adjusted By Number Of Digits)" % (e_real))
 	if cycle_format == 0:
-		w.write("\n\n\n\n(S) Years Per Cycle ---> %s\n\n\n\n" % (k2))
+		w.write("\n\n\n\n\n\n\n\n(S) Years Per Cycle ---> %s" % (k2))
 		w.write("\n\n\n\n<%02d>\n\n\n\n" % (y%k2))
 	elif cycle_format == 1:
-		w.write("\n\n\n\n(L) Years Per Cycle ---> %s\n\n\n\n" % (k2))
+		w.write("\n\n\n\n\n\n\n\n(L) Years Per Cycle ---> %s" % (k2))
 		if type(year) == int:
 			w.write("\n\n\n\n(%02d)\n\n\n\n" % (y//k2))
 			w.write("<%02d>\n\n\n\n" % (y%k2))

@@ -11,9 +11,9 @@ plat = platform.system()
 
 #[For Variable "a"]
 #iOS Compliant, since os.get_terminal_size() is DISALLOWED!
-#Default is PRESET TO 32, change the number if you want in INTEGER AT LEAST 0
+#Default is PRESET TO 0, change the number if you want in INTEGER to Create Dash ("-") Borders!
 
-aa=32
+aa=0
 
 
 
@@ -205,8 +205,8 @@ with open('02_super_cycle.txt','w') as occ:
 	occ.write("\nMandatory Minimum Of Digits IS 4\n")
 	occ.write("\n\n\nAdded Minimum of Digits ---> %d\n" % (added_digits))
 	occ.write("\n\n\nYear(s) Per Cycle ---> %d\n" % (a))
-	occ.write("\n\n\nElement <CC - ##> ---> %02d\n" % (b))
-	occ.write("\n\n\nTargetted Super-Cycle Phase Index ---> %02d\n" % (super_cycle_index))
+	occ.write(f"\n\n\nElement <X - #> ---> {b:0>{len(str(a-1))}}\n")
+	occ.write("\n\n\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
 	occ.write("\n\n\nTargetted Month ---> %02d\n" % (month))
 	if date_group == 1:
 		if month == 2:
@@ -659,8 +659,8 @@ print("\nGenerated! See ---> 02_super_cycle.txt In The Same Folder As This Code!
 print("\nMandatory Minimum Of Digits IS 4\n")
 print("\nAdded Minimum of Digits ---> %d\n" % (added_digits))
 print("\nYear(s) Per Cycle ---> %d\n" % (a))
-print("\nElement <CC - ##> ---> %02d\n" % (b))
-print("\nTargetted Super-Cycle Phase Index ---> %02d\n" % (super_cycle_index))
+print("\nElement <X - #> ---> %02d\n" % (b))
+print("\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
 print("\nWeek System ---> [%s] %s\n" % (week_system.upper(),dlis[ord(week_system.upper())-65]))
 print("\nTargetted Month ---> %02d\n" % (month))
 if date_group == 1:

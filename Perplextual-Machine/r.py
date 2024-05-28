@@ -11,9 +11,9 @@ plat = platform.system()
 
 #[For Variable "a"]
 #iOS Compliant, since os.get_terminal_size() is DISALLOWED!
-#Default is PRESET TO 32, change the number if you want in INTEGER AT LEAST 0
+#Default is PRESET TO 0, change the number if you want in INTEGER to Create Dash ("-") Borders!
 
-a=32
+a=0
 
 
 
@@ -729,18 +729,22 @@ with open(fname,'w') as w:
 			w.write("%s" % array)
 
 	
-
+	prefix = y%k2
 	if cycle_format == 0:
 		w.write("\n\n\n\n\n\n\n\n(S) Years Per Cycle ---> %s" % (k2))
-		w.write("\n\n\n\n<%02d>\n\n\n\n" % (y%k2))
+		w.write("\n\n\n\n")
+		w.write(f"<{prefix:0>{len(str(k2-1))}}>")
+		w.write("\n\n\n\n")
 	elif cycle_format == 1:
 		w.write("\n\n\n\n\n\n\n\n(L) Years Per Cycle ---> %s" % (k2))
 		if type(year) == int:
-			w.write("\n\n\n\n(%02d)\n\n\n\n" % (y//k2))
-			w.write("<%02d>\n\n\n\n" % (y%k2))
+			w.write("\n\n\n\n(%d)\n\n\n\n" % (y//k2))
+			w.write(f"<{prefix:0>{len(str(k2-1))}}>")
+			w.write("\n\n\n\n")
 		elif type(year) == str:
-			w.write("\n\n\n\n(%02d)\n\n\n\n" % (y//k2))
-			w.write("<%02d>\n\n\n\n" % (y%k2))
+			w.write("\n\n\n\n(%d)\n\n\n\n" % (y//k2))
+			w.write(f"<{prefix:0>{len(str(k2-1))}}>")
+			w.write("\n\n\n\n")
 	if show_grid_calendar == 1:
 		w.write("Show Grid-Based Calendar ---> Yes\n\n\n\n")
 	else:
@@ -767,7 +771,6 @@ with open(fname,'w') as w:
 		A = y_full % 19
 		B = y_full % 4
 		C = y_full % 7
-		 
 		 
 		P = (y_full // 100)
 		Q = ((13 + 8 * P) // 25)

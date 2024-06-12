@@ -6,7 +6,10 @@ import platform
 from functools import lru_cache
 from random import randint as rand
 
+
+
 plat = platform.system()
+
 
 
 #[For Variable "a"]
@@ -38,7 +41,7 @@ b=
 
 # If need to include a specific year, input this equation AT EXACT, indicated the following row below:
 # [targetted_year] // (400*a) ["//" is a floor division so write it accordingly!]
-# Example: 2024 // (400*a)
+# Example: 224 // (400*a)
 
 #Note: Targetted_year may not be contained in the final result, but the key is:
 #It will automatically map the cycle phase index to the super cycle that contains the [targetted_year] 
@@ -54,13 +57,13 @@ month=
 
 
 # [For Variable "date_group"] Select Date Group of the month(from 1 to 7) described as below:
-# 1 = Targetted Days Are 01, 08, 15, 22, 29 (For Month 02 [February], 29 is applicable when leap-year(s) only)
-# 2 = Targetted Days Are 02, 09, 16, 23, 30 (30 is Not Applicable in Any Month 02 [February])
-# 3 = Targetted Days Are 03, 10, 17, 24, 31 (31st is Not Applicable for Any Non-31-Day-Month)
-# 4 = Targetted Days Are 04, 11, 18, 25
-# 5 = Targetted Days Are 05, 12, 19, 26
-# 6 = Targetted Days Are 06, 13, 20, 27
-# 7 = Targetted Days Are 07, 14, 21, 28
+# 1 = Targetted Days Are 1, 8, 15, 22, 29 (For Month 2 [February], 29 is applicable when leap-year(s) only)
+# 2 = Targetted Days Are 2, 9, 16, 23, 30 (30 is Not Applicable in Any Month 2 [February])
+# 3 = Targetted Days Are 3, 10, 17, 24, 31 (31st is Not Applicable for Any Non-31-Day-Month)
+# 4 = Targetted Days Are 4, 11, 18, 25
+# 5 = Targetted Days Are 5, 12, 19, 26
+# 6 = Targetted Days Are 6, 13, 20, 27
+# 7 = Targetted Days Are 7, 14, 21, 28
 
 date_group=
 
@@ -195,42 +198,42 @@ d7 = []
 
 
 
-if os.path.exists('02_super_cycle.txt'):
-	os.remove('02_super_cycle.txt')
+if os.path.exists('2_super_cycle.txt'):
+	os.remove('2_super_cycle.txt')
 
 clear()
 
-with open('02_super_cycle.txt','w') as occ:
+with open('2_super_cycle.txt','w') as occ:
 	occ.write("Week System ---> [%s] %s\n\n\n" % (week_system.upper(),dlis[ord(week_system.upper())-65]))
 	occ.write("\nMandatory Minimum Of Digits IS 4\n")
 	occ.write("\n\n\nAdded Minimum of Digits ---> %d\n" % (added_digits))
 	occ.write("\n\n\nYear(s) Per Cycle ---> %d\n" % (a))
 	occ.write(f"\n\n\nElement <X - #> ---> {b:0>{len(str(a-1))}}\n")
 	occ.write("\n\n\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
-	occ.write("\n\n\nTargetted Month ---> %02d\n" % (month))
+	occ.write("\n\n\nTargetted Month ---> %d\n" % (month))
 	if date_group == 1:
 		if month == 2:
-			occ.write("\n\n\nTargetted Dates---> 01, 08, 15, 22 [29 for leap-year(s) only]\n\n\n\n\n\n\n\n")
+			occ.write("\n\n\nTargetted Dates---> 1, 8, 15, 22 [29 for leap-year(s) only]\n\n\n\n\n\n\n\n")
 		else:
-			occ.write("\n\n\nTargetted Dates---> 01, 08, 15, 22, 29\n\n\n\n\n\n\n\n")
+			occ.write("\n\n\nTargetted Dates---> 1, 8, 15, 22, 29\n\n\n\n\n\n\n\n")
 	elif date_group == 2:
 		if month == 2:
-			occ.write("\n\n\nTargetted Dates---> 02, 09, 16, 23\n\n\n\n\n\n\n\n")
+			occ.write("\n\n\nTargetted Dates---> 2, 9, 16, 23\n\n\n\n\n\n\n\n")
 		else:
-			occ.write("\n\n\nTargetted Dates---> 02, 09, 16, 23, 30\n\n\n\n\n\n\n\n")
+			occ.write("\n\n\nTargetted Dates---> 2, 9, 16, 23, 30\n\n\n\n\n\n\n\n")
 	elif date_group == 3:
 		if month == 2 or month == 4 or month == 6 or month == 9 or month == 11:
-			occ.write("\n\n\nTargetted Dates---> 03, 10, 17, 24\n\n\n\n\n\n\n\n")
+			occ.write("\n\n\nTargetted Dates---> 3, 10, 17, 24\n\n\n\n\n\n\n\n")
 		else:
-			occ.write("\n\n\nTargetted Dates---> 03, 10, 17, 24, 31\n\n\n\n\n\n\n\n")
+			occ.write("\n\n\nTargetted Dates---> 3, 10, 17, 24, 31\n\n\n\n\n\n\n\n")
 	elif date_group == 4:
-		occ.write("\n\n\nTargetted Dates---> 04, 11, 18, 25\n\n\n\n\n\n\n\n")
+		occ.write("\n\n\nTargetted Dates---> 4, 11, 18, 25\n\n\n\n\n\n\n\n")
 	elif date_group == 5:
-		occ.write("\n\n\nTargetted Dates---> 05, 12, 19, 26\n\n\n\n\n\n\n\n")
+		occ.write("\n\n\nTargetted Dates---> 5, 12, 19, 26\n\n\n\n\n\n\n\n")
 	elif date_group == 6:
-		occ.write("\n\n\nTargetted Dates---> 06, 13, 20, 27\n\n\n\n\n\n\n\n")
+		occ.write("\n\n\nTargetted Dates---> 6, 13, 20, 27\n\n\n\n\n\n\n\n")
 	elif date_group == 7:
-		occ.write("\n\n\nTargetted Dates---> 07, 14, 21, 28\n\n\n\n\n\n\n\n")
+		occ.write("\n\n\nTargetted Dates---> 7, 14, 21, 28\n\n\n\n\n\n\n\n")
 	
 
 
@@ -655,41 +658,43 @@ with open('02_super_cycle.txt','w') as occ:
 
 
 print("-"*aa)
-print("\nGenerated! See ---> 02_super_cycle.txt In The Same Folder As This Code!\n")
+print("\nGenerated! See ---> 2_super_cycle.txt In The Same Folder As This Code!\n")
 print("\nMandatory Minimum Of Digits IS 4\n")
 print("\nAdded Minimum of Digits ---> %d\n" % (added_digits))
 print("\nYear(s) Per Cycle ---> %d\n" % (a))
-print("\nElement <X - #> ---> %02d\n" % (b))
+print("\nElement <X - #> ---> %d\n" % (b))
 print("\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
 print("\nWeek System ---> [%s] %s\n" % (week_system.upper(),dlis[ord(week_system.upper())-65]))
-print("\nTargetted Month ---> %02d\n" % (month))
+print("\nTargetted Month ---> %d\n" % (month))
 if date_group == 1:
 	if month == 2:
-		print("\nTargetted Dates---> 01, 08, 15, 22. [29 for leap-year(s) only]\n")
+		print("\nTargetted Dates---> 1, 8, 15, 22. [29 for leap-year(s) only]\n")
 	else:
-		print("\nTargetted Dates---> 01, 08, 15, 22, 29\n")
+		print("\nTargetted Dates---> 1, 8, 15, 22, 29\n")
 elif date_group == 2:
 	if month == 2:
-		print("\nTargetted Dates---> 02, 09, 16, 23\n")
+		print("\nTargetted Dates---> 2, 9, 16, 23\n")
 	else:
-		print("\nTargetted Dates---> 02, 09, 16, 23, 30\n")
+		print("\nTargetted Dates---> 2, 9, 16, 23, 30\n")
 elif date_group == 3:
 	if month == 2 or month == 4 or month == 6 or month == 9 or month == 11:
-		print("\nTargetted Dates---> 03, 10, 17, 24\n")
+		print("\nTargetted Dates---> 3, 10, 17, 24\n")
 	else:
-		print("\nTargetted Dates---> 03, 10, 17, 24, 31\n")
+		print("\nTargetted Dates---> 3, 10, 17, 24, 31\n")
 elif date_group == 4:
-	print("\nTargetted Dates---> 04, 11, 18, 25\n")
+	print("\nTargetted Dates---> 4, 11, 18, 25\n")
 elif date_group == 5:
-	print("\nTargetted Dates---> 05, 12, 19, 26\n")
+	print("\nTargetted Dates---> 5, 12, 19, 26\n")
 elif date_group == 6:
-	print("\nTargetted Dates---> 06, 13, 20, 27\n")
+	print("\nTargetted Dates---> 6, 13, 20, 27\n")
 elif date_group == 7:
-	print("\nTargetted Dates---> 07, 14, 21, 28\n")
+	print("\nTargetted Dates---> 7, 14, 21, 28\n")
 e = time.time()
-print("\nProcessed In ---> %02d : %02d\n" % ((e-s)//60,(e-s)%60))
+print("\nProcessed In ---> %d : %02d\n" % ((e-s)//60,(e-s)%60))
 print("-"*aa)
 input("\n\nPress Enter To Exit!")
+
+
 if plat == 'Windows':
 	os.system('cls')
 else:

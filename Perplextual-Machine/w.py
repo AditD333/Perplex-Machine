@@ -12,15 +12,6 @@ plat = platform.system()
 
 
 
-#[For Variable "a"]
-#iOS Compliant, since os.get_terminal_size() is DISALLOWED!
-#Default is PRESET TO 0, change the number if you want in INTEGER to Create Dash ("-") Borders!
-
-aa=0
-
-
-
-
 # [For Variable "a"] Write in integer form (No Quotes) Years per cycle, Minimum of 1 (!)
 
 a=
@@ -35,13 +26,13 @@ b=
 
 # [For Variable "super_cycle_index"] Minimal of 1 (!), 400-Full-Cycle Index. For Example:
 
-# 0 = First 400-full cycle (00 to 399)
+# 0 = First 400-full cycle (0 to 399)
 # 1 = Second 400-full cycle (400 to 799)
 # K = 400-full cycles of (400[K] to 400[K]+399) [K IS ZERO-BASED INDEX AND NUMBERING!]
 
 # If need to include a specific year, input this equation AT EXACT, indicated the following row below:
 # [targetted_year] // (400*a) ["//" is a floor division so write it accordingly!]
-# Example: 224 // (400*a)
+# Example: 2024 // (400*a)
 
 #Note: Targetted_year may not be contained in the final result, but the key is:
 #It will automatically map the cycle phase index to the super cycle that contains the [targetted_year] 
@@ -75,13 +66,13 @@ date_group=
 
 #Example -> To start the week on Sunday, write 'A' or 'a', or if start Monday, write 'B' or 'b' and so on...
 
-# A = Sunday - Saturday
-# B = Monday - Sunday
-# C = Tuesday - Monday
-# D = Wednesday - Tuesday
-# E = Thursday - Wednesday
-# F = Friday - Thursday
-# G = Saturday - Friday
+# A = Sunday - Saturday (6)
+# B = Monday - Sunday (5)
+# C = Tuesday - Monday (4)
+# D = Wednesday - Tuesday (3)
+# E = Thursday - Wednesday (2)
+# F = Friday - Thursday (1)
+# G = Saturday - Friday (0)
 
 week_system=
 
@@ -92,8 +83,8 @@ week_system=
 #The number of digits when dealing with years LESS THAN 1000 will be forced to 4-digit format!
 #You can add it by a NON-NEGATIVE INTEGER specifying to:
 # 0 = No minimum of digits added, keep it to 4
-# 1 = 1 digit added to minimum output, i.e forced to 5-digit format for less than 10000
-# 2 = 2 digits added to minimum output, i.e forced to 6-digits format less than year 100000
+# 1 = 1 digit added to minimum output, i.e forced to 5-digit format for less than 10,000
+# 2 = 2 digits added to minimum output, i.e forced to 6-digits format less than year 100,000
 # And so on, MIND YOUR RAM PERFORMANCE AS WELL!
 
 added_digits=
@@ -106,7 +97,6 @@ added_digits=
 
 s = time.time()
 @lru_cache(None)
-
 
 
 def clear():
@@ -137,14 +127,10 @@ elif sys.version_info[0] == 3:
 
 
 
+
 clear()
 
 
-
-if type(aa) != int or aa < 0:
-	print("Error!")
-	input("\n\nPress Enter To Exit!")
-	sys.exit()
 
 if a is None or type(a) != int or a < 1:
 	print("Error!")
@@ -187,7 +173,7 @@ sun = mon = tue = wed = thu = fri = sat = 0
 
 
 
-dlis = ['Sunday - Saturday','Monday - Sunday','Tuesday - Monday','Wednesday - Tuesday','Thursday - Wednesday','Friday - Thursday','Saturday - Friday']
+dlis = ['Sunday - Saturday (6)','Monday - Sunday (5)','Tuesday - Monday (4)','Wednesday - Tuesday (3)','Thursday - Wednesday (2)','Friday - Thursday (1)','Saturday - Friday (0)']
 d1 = []
 d2 = []
 d3 = []
@@ -657,12 +643,12 @@ with open('2_super_cycle.txt','w') as occ:
 
 
 
-print("-"*aa)
+print("-"*41)
 print("\nGenerated! See ---> 2_super_cycle.txt In The Same Folder As This Code!\n")
 print("\nMandatory Minimum Of Digits IS 4\n")
 print("\nAdded Minimum of Digits ---> %d\n" % (added_digits))
 print("\nYear(s) Per Cycle ---> %d\n" % (a))
-print("\nElement <X - #> ---> %d\n" % (b))
+print(f"\nElement <X - #> ---> {b:0>{len(str(a-1))}}\n")
 print("\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
 print("\nWeek System ---> [%s] %s\n" % (week_system.upper(),dlis[ord(week_system.upper())-65]))
 print("\nTargetted Month ---> %d\n" % (month))
@@ -691,7 +677,7 @@ elif date_group == 7:
 	print("\nTargetted Dates---> 7, 14, 21, 28\n")
 e = time.time()
 print("\nProcessed In ---> %d : %02d\n" % ((e-s)//60,(e-s)%60))
-print("-"*aa)
+print("-"*41)
 input("\n\nPress Enter To Exit!")
 
 

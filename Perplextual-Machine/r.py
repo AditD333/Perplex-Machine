@@ -7,15 +7,8 @@ import platform
 from functools import lru_cache
 
 
+
 plat = platform.system()
-
-
-
-#[For Variable "a"]
-#iOS Compliant, since os.get_terminal_size() is DISALLOWED!
-#Default is PRESET TO 0, change the number if you want in INTEGER to Create Dash ("-") Borders!
-
-a=0
 
 
 
@@ -41,9 +34,9 @@ k=
 #1. Any DIGIT from 0 - 9 inside the quote! e.g year 2000 ==> '2000' For year(s) 0000 and Above
 #2. Or, if you want to random a bunch of digits, and without quote(s) Write any natural number(s) MINIMAL of 1 (MIND YOUR RAM!)
 #3. Note for that the in range of 1 - 4 for steps 1 and 2:
-	# 1 --> Years are forced to print to 4-digit format (0000 - 009)
-	# 2 --> Years are forced to print to 4-digit format (0000 - 099)
-	# 3 --> Years are forced to print to 4-digit format (0000 - 999)
+	# 1 --> Years are forced to print to 4-digit format (0000 - 0009)
+	# 2 --> Years are forced to print to 4-digit format (0000 - 0099)
+	# 3 --> Years are forced to print to 4-digit format (0000 - 0999)
 	# 4 --> Years are to printed normally to 4-digit format (0000 - 9999)
 	# More than 4 = Follows the number of digits
 #4. NO NEGATIVE INPUTS AS WELL!
@@ -71,13 +64,13 @@ set_exact_position=
 
 #Example -> To start the week on Sunday, write 'A' or 'a', or if start Monday, write 'B' or 'b' and so on...
 
-# A = Sunday - Saturday
-# B = Monday - Sunday
-# C = Tuesday - Monday
-# D = Wednesday - Tuesday
-# E = Thursday - Wednesday
-# F = Friday - Thursday
-# G = Saturday - Friday
+# A = Sunday - Saturday (6)
+# B = Monday - Sunday (5)
+# C = Tuesday - Monday (4)
+# D = Wednesday - Tuesday (3)
+# E = Thursday - Wednesday (2)
+# F = Friday - Thursday (1)
+# G = Saturday - Friday (0)
 
 
 
@@ -149,7 +142,7 @@ week_system=
 # [For Variable "show_grid_calendar"] Follow the instructions below!
 #Show Grid Calendar or Not? Be careful that sometimes the result can be ZIG-ZAGGED!
 #Also, because the years will take the last 4 digits, it is important that:
-	#Any given years ENDING IN 0000 - 999 will shown as A 1-3-DIGIT NUMBER, regardless to the full-year number
+	#Any given years ENDING IN 0000 - 0999 will shown as A 1-3-DIGIT NUMBER, regardless to the full-year number
 #Input:
 #0 = DISABLE grid calendar (Perfect For Fancy Fonts)
 #1 = ENABLE grid calendar (Perfect For Supported CLI-Like Fonts!)
@@ -207,12 +200,6 @@ elif sys.version_info[0] >= 4:
 clear()
 
 
-
-
-if type(a) != int or a < 0:
-	print("Error!")
-	input("\n\nPress Enter To Exit!")
-	sys.exit()
 
 if k is None:
 	print("Error!")
@@ -334,7 +321,7 @@ if type(k) == str:
 
 
 elif type(k) == int:
-	d0 = '123456789'
+	d0 = '0123456789'
 	e0 = []
 	k_indicate = []
 	for h0 in d0:
@@ -387,14 +374,14 @@ else:
 
 cf = ["Short","Long"]
 weekstart_letter = ['A','B','C','D','E','F','G']
-weekstart_dayoftheweek = ['Sunday - Saturday','Monday - Sunday','Tuesday - Monday','Wednesday - Tuesday','Thursday - Wednesday','Friday - Thursday','Saturday - Friday']
+weekstart_dayoftheweek = ['Sunday - Saturday (6)','Monday - Sunday (5)','Tuesday - Monday (4)','Wednesday - Tuesday (3)','Thursday - Wednesday (2)','Friday - Thursday (1)','Saturday - Friday (0)']
 weekstart_detect = [c.SUNDAY,c.MONDAY,c.TUESDAY,c.WEDNESDAY,c.THURSDAY,c.FRIDAY,c.SATURDAY]
 contains = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
 
 
 
 if mode == 0:
-	fname = "00_calendar_only.txt"
+	fname = "0_calendar_only.txt"
 	if os.path.exists(fname):
 		os.remove(fname)
 	else:
@@ -409,10 +396,10 @@ elif mode == 1:
 
 
 with open(fname,'w') as w:
-	w.write(":"*a)
+	w.write("-"*41)
 	w.write("\n\n\n\n")
 	if random_trigger == 1:
-		d = '123456789'
+		d = '0123456789'
 		e = []
 		y_indicate = []
 		for h in d:
@@ -425,9 +412,9 @@ with open(fname,'w') as w:
 		y1 = "".join(y_indicate)
 		y2 = "".join(y_indicate[-64:])
 		y = int(y1)
-		y164 = (int(y2))%10**64
-		y400 = y164%400
-		y10k = y164%10000
+		y1064 = (int(y2))%10**64
+		y400 = y1064%400
+		y10k = y1064%10000
 		y_full = y%68400000
 	elif random_trigger == 0:
 		e = []
@@ -440,9 +427,9 @@ with open(fname,'w') as w:
 		y1 = "".join(e)
 		y2 = "".join(e[-64:])
 		y = int(y1)
-		y164 = (int(y2))%10**64
-		y400 = y164%400
-		y10k = y164%10000
+		y1064 = (int(y2))%10**64
+		y400 = y1064%400
+		y10k = y1064%10000
 		y_full = y%68400000
 	ws = week_system
 	if set_exact_position == 3:
@@ -700,22 +687,22 @@ with open(fname,'w') as w:
 
 	if type(year) == int:
 		if year == 1:
-			w.write("\n\nDigit Group ---> 1 (Forced 0000 - 009)\n\n\n\n\n\n\n\n")
+			w.write("\n\nDigit Group ---> 1 (Forced 0000 - 0009)\n\n\n\n\n\n\n\n")
 		elif year == 2:
-			w.write("\n\nDigit Group ---> 2 (Forced 0000 - 099)\n\n\n\n\n\n\n\n")
+			w.write("\n\nDigit Group ---> 2 (Forced 0000 - 0099)\n\n\n\n\n\n\n\n")
 		elif year == 3:
-			w.write("\n\nDigit Group ---> 3 (Forced 0000 - 999)\n\n\n\n\n\n\n\n")
+			w.write("\n\nDigit Group ---> 3 (Forced 0000 - 0999)\n\n\n\n\n\n\n\n")
 		elif year == 4:
 			w.write("\n\nDigit Group ---> 4 (Normal 0000 - 9999)\n\n\n\n\n\n\n\n")
 		else:
 			w.write("\n\nDigit Group ---> %d (Adjusted By Number Of Digits)\n\n\n\n\n\n\n\n" % (year))
 	elif type(year) == str:
 		if e_real == 1:
-			w.write("\n\nDigit Group ---> 1 (Forced 0000 - 009)\n\n\n\n\n\n\n\n")
+			w.write("\n\nDigit Group ---> 1 (Forced 0000 - 0009)\n\n\n\n\n\n\n\n")
 		elif e_real == 2:
-			w.write("\n\nDigit Group ---> 2 (Forced 0000 - 099)\n\n\n\n\n\n\n\n")
+			w.write("\n\nDigit Group ---> 2 (Forced 0000 - 0099)\n\n\n\n\n\n\n\n")
 		elif e_real == 3:
-			w.write("\n\nDigit Group ---> 3 (Forced 0000 - 999)\n\n\n\n\n\n\n\n")
+			w.write("\n\nDigit Group ---> 3 (Forced 0000 - 0999)\n\n\n\n\n\n\n\n")
 		elif e_real == 4:
 			w.write("\n\nDigit Group ---> 4 (Normal 0000 - 9999)\n\n\n\n\n\n\n\n")
 		else:
@@ -763,10 +750,6 @@ with open(fname,'w') as w:
 	w.write("\n\n\n\nYear Of The : %s %s - %s %s" % (element[(y_full-1)%10],animals[(y_full-1)%12],element[y_full%10],animals[y_full%12]))
 	w.write("\n\n\n\n")
 
-	w.write("\n\nPotential 9-First-Day-Of-Lunar-Month-Beginning Is 90.7912661%")
-	w.write("\n\nWhile Potential Only 8-First-Day-Of-Lunar-Month-Beginning Is Only 9.2897339%")
-
-
 
 	w.write("\n\n\n")
 	def gaussEaster(y_full,mode):
@@ -813,8 +796,8 @@ with open(fname,'w') as w:
 			w.write(("    %s - [%s] - Mon - 6 - 8  : Whit Monday (Pentecost Monday)\n") % ((dt.datetime(2000+y400,6,8).strftime("%j")),mon_number))
 			w.write(("    %s - [%s] - Tue - 6 - 9  : Whit Tuesday (Pentecost Tuesday)\n") % ((dt.datetime(2000+y400,6,9).strftime("%j")),tue_number))
 			w.write(("    %s - [%s] - Sun - 6 - 14  : Trinity Sunday\n") % ((dt.datetime(2000+y400,6,14).strftime("%j")),sun_number))
-			w.write(("    %s - [%s] - Thu - 6 - 18  : Corpus Christi (Thursday State)\n") % ((dt.datetime(2000+y400,6,18).strftime("%j")),thu_number))
-			w.write(("    %s - [%s] - Sun - 6 - 21  : Corpus Christi (Sunday State)\n") % ((dt.datetime(2000+y400,6,21).strftime("%j")),sun_number))
+			w.write(("    %s - [%s] - Thu - 6 - 18  : Corpus Christi\n") % ((dt.datetime(2000+y400,6,18).strftime("%j")),thu_number))
+			w.write(("    %s - [%s] - Sun - 6 - 21  : Sunday After Corpus Christi\n") % ((dt.datetime(2000+y400,6,21).strftime("%j")),sun_number))
 			
 		 
 
@@ -850,8 +833,8 @@ with open(fname,'w') as w:
 			w.write(("    %s - [%s] - Mon - 6 - 7  : Whit Monday (Pentecost Monday)\n") % ((dt.datetime(2000+y400,6,7).strftime("%j")),mon_number))
 			w.write(("    %s - [%s] - Tue - 6 - 8  : Whit Tuesday (Pentecost Tuesday)\n") % ((dt.datetime(2000+y400,6,8).strftime("%j")),tue_number))
 			w.write(("    %s - [%s] - Sun - 6 - 13  : Trinity Sunday\n") % ((dt.datetime(2000+y400,6,13).strftime("%j")),sun_number))
-			w.write(("    %s - [%s] - Thu - 6 - 17  : Corpus Christi (Thursday State)\n") % ((dt.datetime(2000+y400,6,17).strftime("%j")),thu_number))
-			w.write(("    %s - [%s] - Sun - 6 - 20  : Corpus Christi (Sunday State)\n") % ((dt.datetime(2000+y400,6,20).strftime("%j")),sun_number))
+			w.write(("    %s - [%s] - Thu - 6 - 17  : Corpus Christi\n") % ((dt.datetime(2000+y400,6,17).strftime("%j")),thu_number))
+			w.write(("    %s - [%s] - Sun - 6 - 20  : Sunday After Corpus Christi\n") % ((dt.datetime(2000+y400,6,20).strftime("%j")),sun_number))
 		
 
 
@@ -906,8 +889,8 @@ with open(fname,'w') as w:
 				w.write(("    %s - [%s] - Mon - %d - %d  : Whit Monday (Pentecost Monday)\n") % ((dt.datetime(2000+y400,cha5a.month,cha5a.day).strftime("%j")),mon_number,cha5a.month,cha5a.day))
 				w.write(("    %s - [%s] - Tue - %d - %d  : Whit Tuesday (Pentecost Tuesday)\n") % ((dt.datetime(2000+y400,cha6a.month,cha6a.day).strftime("%j")),tue_number,cha6a.month,cha6a.day))
 				w.write(("    %s - [%s] - Sun - %d - %d  : Trinity Sunday\n") % ((dt.datetime(2000+y400,cha6.month,cha6.day).strftime("%j")),sun_number,cha6.month,cha6.day))
-				w.write(("    %s - [%s] - Thu - %d - %d  : Corpus Christi (Thursday State)\n") % ((dt.datetime(2000+y400,cha7.month,cha7.day).strftime("%j")),thu_number,cha7.month,cha7.day))
-				w.write(("    %s - [%s] - Sun - %d - %d  : Corpus Christi (Sunday State)\n") % ((dt.datetime(2000+y400,cha7a.month,cha7a.day).strftime("%j")),sun_number,cha7a.month,cha7a.day))
+				w.write(("    %s - [%s] - Thu - %d - %d  : Corpus Christi\n") % ((dt.datetime(2000+y400,cha7.month,cha7.day).strftime("%j")),thu_number,cha7.month,cha7.day))
+				w.write(("    %s - [%s] - Sun - %d - %d  : Sunday After Corpus Christi\n") % ((dt.datetime(2000+y400,cha7a.month,cha7a.day).strftime("%j")),sun_number,cha7a.month,cha7a.day))
 
 
 
@@ -961,8 +944,8 @@ with open(fname,'w') as w:
 				w.write(("    %s - [%s] - Mon - %d - %d  : Whit Monday (Pentecost Monday)\n") % ((dt.datetime(2000+y400,cha5a.month,cha5a.day).strftime("%j")),mon_number,cha5a.month,cha5a.day))
 				w.write(("    %s - [%s] - Tue - %d - %d  : Whit Tuesday (Pentecost Tuesday)\n") % ((dt.datetime(2000+y400,cha6a.month,cha6a.day).strftime("%j")),tue_number,cha6a.month,cha6a.day))
 				w.write(("    %s - [%s] - Sun - %d - %d  : Trinity Sunday\n") % ((dt.datetime(2000+y400,cha6.month,cha6.day).strftime("%j")),sun_number,cha6.month,cha6.day))
-				w.write(("    %s - [%s] - Thu - %d - %d  : Corpus Christi (Thursday State)\n") % ((dt.datetime(2000+y400,cha7.month,cha7.day).strftime("%j")),thu_number,cha7.month,cha7.day))
-				w.write(("    %s - [%s] - Sun - %d - %d  : Corpus Christi (Sunday State)\n") % ((dt.datetime(2000+y400,cha7a.month,cha7a.day).strftime("%j")),sun_number,cha7a.month,cha7a.day))
+				w.write(("    %s - [%s] - Thu - %d - %d  : Corpus Christi\n") % ((dt.datetime(2000+y400,cha7.month,cha7.day).strftime("%j")),thu_number,cha7.month,cha7.day))
+				w.write(("    %s - [%s] - Sun - %d - %d  : Sunday After Corpus Christi\n") % ((dt.datetime(2000+y400,cha7a.month,cha7a.day).strftime("%j")),sun_number,cha7a.month,cha7a.day))
 
 		for novadvent in range(27,31):
 				if c.weekday(y400,11,novadvent) == c.SUNDAY:
@@ -990,20 +973,20 @@ with open(fname,'w') as w:
 		centdiv4 = century//4 
 		calib = 2-century+centdiv4
 		d1 = 36525*(y1+4716)//100
-		e = 3601 * (month+1) // 10000
+		e = 306001 * (month+1) // 10000
 		f = calib + d + d1 + e - 1525
 		
 
 		jddiv = (f - 2451549)
-		ddiv = (jddiv*7499183//281882250)
-		dmod = (jddiv * 7499183) % 281882250
-		dic = (dmod/7499183)
-		resultdiv = (ddiv + 1749) // 12
-		resultmod0 = (ddiv + 1749) % 12
+		ddiv = (jddiv*70499183//2081882250)
+		dmod = (jddiv * 70499183) % 2081882250
+		dic = (dmod/70499183)
+		resultdiv = (ddiv + 17049) // 12
+		resultmod0 = (ddiv + 17049) % 12
 		hijri_month = ["1","2","3","4","5","6","7","8","9","10","11","12"]
 
 
-		if (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 11 and resultdiv == -1):
+		if (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 11 and resultdiv == -1):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, (resultdiv+1) % (10**64),hijri_month[(resultmod0+1)%12]))
@@ -1012,7 +995,7 @@ with open(fname,'w') as w:
 					w.write("\n\n\n%s%d (Continued) :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, (resultdiv+1) % (10**64),hijri_month[(resultmod0+1)%12]))
 
-		elif (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 11 and resultdiv >= 0):
+		elif (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 11 and resultdiv >= 0):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, (resultdiv+1) % (10**64),hijri_month[(resultmod0+1)%12]))
@@ -1021,7 +1004,7 @@ with open(fname,'w') as w:
 					w.write("\n\n\n%s%d (Continued) :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, (resultdiv+1) % (10**64),hijri_month[(resultmod0+1)%12]))
 
-		elif (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 != 11 and resultdiv >= 0):
+		elif (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 != 11 and resultdiv >= 0):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, resultdiv % (10**64),hijri_month[resultmod0+1]))
@@ -1030,7 +1013,7 @@ with open(fname,'w') as w:
 					w.write("\n\n\n%s%d (Continued) :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, resultdiv % (10**64),hijri_month[resultmod0+1]))
 
-		elif (dic >= 0 and dic <= 6 + (28169441/7499183) and resultdiv >= 0):
+		elif (dic >= 0 and dic <= 6 + (28169441/70499183) and resultdiv >= 0):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %04d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, resultdiv % (10**64),hijri_month[resultmod0]))
@@ -1041,7 +1024,7 @@ with open(fname,'w') as w:
 				
 
 
-		elif (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 11 and resultdiv <= -1):
+		elif (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 11 and resultdiv <= -1):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %05d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, (resultdiv+1) % (10**64) - 10**64,hijri_month[(resultmod0+1)%12]))
@@ -1050,7 +1033,7 @@ with open(fname,'w') as w:
 					w.write("\n\n\n%s%d (Continued) :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %05d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, (resultdiv+1) % (10**64) - 10**64,hijri_month[(resultmod0+1)%12]))
 
-		elif (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 != 11 and resultdiv <= -1):
+		elif (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 != 11 and resultdiv <= -1):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %05d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, resultdiv % (10**64) - 10**64,hijri_month[resultmod0+1]))
@@ -1059,7 +1042,7 @@ with open(fname,'w') as w:
 					w.write("\n\n\n%s%d (Continued) :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %05d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, resultdiv % (10**64) - 10**64,hijri_month[resultmod0+1]))
 
-		elif (dic >= 0 and dic <= 6 + (28169441/7499183) and resultdiv <= -1):
+		elif (dic >= 0 and dic <= 6 + (28169441/70499183) and resultdiv <= -1):
 			if c.weekday(y400,m,d) == weekstart_detect[ord(week_system.upper()) - 65]:
 				w.write("\n\n\n%s%d :\n\n\n\n" % (week_system.upper(),week))
 				w.write("    %s - [%d] - %s - %d - %d  <---->  %s   [H  %05d - %s - 1]\n" % (day_of_year_list.strftime("%j"), (c.weekday(y400,m,d)+2-week_system_ordinal)%7+1, c.day_abbr[c.weekday(y400,m,d)], m, d, dic, resultdiv % (10**64) - 10**64,hijri_month[resultmod0]))
@@ -1095,13 +1078,12 @@ with open(fname,'w') as w:
 		gaussEaster(y_full,mode)
 		w.write(("    %s - [%d] - %s - 12 - 24  : Christmas Eve\n") % ((dt.datetime(2000+y400,12,24).strftime("%j")),(c.weekday(y400,12,24)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,24)]))
 		w.write(("    %s - [%d] - %s - 12 - 25  : Christmas Day\n") % ((dt.datetime(2000+y400,12,25).strftime("%j")),(c.weekday(y400,12,25)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,25)]))
-		w.write(("    %s - [%d] - %s - 12 - 26  : Seven Days After Christmas, Day 1\n") % ((dt.datetime(2000+y400,12,26).strftime("%j")),(c.weekday(y400,12,26)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,26)]))
-		w.write(("    %s - [%d] - %s - 12 - 27  : Seven Days After Christmas, Day 2\n") % ((dt.datetime(2000+y400,12,27).strftime("%j")),(c.weekday(y400,12,27)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,27)]))
-		w.write(("    %s - [%d] - %s - 12 - 28  : Seven Days After Christmas, Day 3\n") % ((dt.datetime(2000+y400,12,28).strftime("%j")),(c.weekday(y400,12,28)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,28)]))
-		w.write(("    %s - [%d] - %s - 12 - 29  : Seven Days After Christmas, Day 4\n") % ((dt.datetime(2000+y400,12,29).strftime("%j")),(c.weekday(y400,12,29)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,29)]))
-		w.write(("    %s - [%d] - %s - 12 - 30  : Seven Days After Christmas, Day 5\n") % ((dt.datetime(2000+y400,12,30).strftime("%j")),(c.weekday(y400,12,30)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,30)]))
-		w.write(("    %s - [%d] - %s - 12 - 31  : Seven Days After Christmas, Day 6\n") % ((dt.datetime(2000+y400,12,31).strftime("%j")),(c.weekday(y400,12,31)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,31)]))
-		w.write(("    %s - [%d] - %s - 1 - 1  : Seven Days After Christmas, Day 7 (At Next Year)\n") % ((dt.datetime(2000+y400+1,1,1).strftime("%j")),(c.weekday(y400+1,1,1)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400+1,1,1)]))	
+		w.write(("    %s - [%d] - %s - 12 - 26  : Six Days After Christmas, Day 1\n") % ((dt.datetime(2000+y400,12,26).strftime("%j")),(c.weekday(y400,12,26)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,26)]))
+		w.write(("    %s - [%d] - %s - 12 - 27  : Six Days After Christmas, Day 2\n") % ((dt.datetime(2000+y400,12,27).strftime("%j")),(c.weekday(y400,12,27)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,27)]))
+		w.write(("    %s - [%d] - %s - 12 - 28  : Six Days After Christmas, Day 3\n") % ((dt.datetime(2000+y400,12,28).strftime("%j")),(c.weekday(y400,12,28)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,28)]))
+		w.write(("    %s - [%d] - %s - 12 - 29  : Six Days After Christmas, Day 4\n") % ((dt.datetime(2000+y400,12,29).strftime("%j")),(c.weekday(y400,12,29)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,29)]))
+		w.write(("    %s - [%d] - %s - 12 - 30  : Six Days After Christmas, Day 5\n") % ((dt.datetime(2000+y400,12,30).strftime("%j")),(c.weekday(y400,12,30)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,30)]))
+		w.write(("    %s - [%d] - %s - 12 - 31  : Six Days After Christmas, Day 6\n") % ((dt.datetime(2000+y400,12,31).strftime("%j")),(c.weekday(y400,12,31)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,31)]))
 		
 		
 
@@ -1113,7 +1095,7 @@ with open(fname,'w') as w:
 				month(y400,y,m,d,week,week_system_ordinal)
 				
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 		if y400%4 == 0 and y400%100 == 0 and y400%400 == 0:
 			w.write("\n\n[2] February %04d\n\n\n\n\n" % (y10k))
@@ -1123,7 +1105,7 @@ with open(fname,'w') as w:
 						week += 1
 					month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		elif y400%4 == 0 and y400%100 == 0 and y400%400 != 0:
@@ -1134,7 +1116,7 @@ with open(fname,'w') as w:
 						week += 1
 					month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		elif y400%4 == 0 and y400%100 != 0 and y400%400 != 0:
@@ -1145,7 +1127,7 @@ with open(fname,'w') as w:
 						week += 1
 					month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		elif y400%4 != 0:
@@ -1156,7 +1138,7 @@ with open(fname,'w') as w:
 						week += 1
 					month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (3,4):
@@ -1166,7 +1148,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (4,5):
@@ -1176,7 +1158,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (5,6):
@@ -1186,7 +1168,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (6,7):
@@ -1196,7 +1178,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (7,8):
@@ -1206,7 +1188,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (8,9):
@@ -1216,7 +1198,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (9,10):
@@ -1226,7 +1208,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (10,11):
@@ -1236,7 +1218,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (11,12):
@@ -1246,7 +1228,7 @@ with open(fname,'w') as w:
 					week += 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 			w.write("\n\n\n\n")
 
 		for m in range (12,13):
@@ -1260,7 +1242,7 @@ with open(fname,'w') as w:
 						week = 1
 				month(y400,y,m,d,week,week_system_ordinal)
 			w.write("\n\n\n\n")
-			w.write(":"*a)
+			w.write("-"*41)
 		
 
 
@@ -1273,7 +1255,6 @@ with open(fname,'w') as w:
 		def c_000(y):
 			d0 = dt.datetime(2000+(y400),12,26)
 			d1 = dt.datetime(2000+(y400),1,1)
-			d1a = dt.datetime(201+(y400),1,1)
 			for i in range (1,8):
 				if c.weekday(y400,1,i) == c.MONDAY:
 					dtyim = dt.datetime(2000+(y400),1,i)
@@ -1904,8 +1885,6 @@ with open(fname,'w') as w:
 			w.write(("    %s - [%d] - %s - 12 - 20  : Human Solidarity Day\n") % (dun039.strftime("%j"),(c.weekday(y400,12,20)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,20)]))
 			w.write(("    %s - [%d] - %s - 12 - 26  : Boxing Day\n") % (d0.strftime("%j"),(c.weekday(y400,12,26)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,26)]))
 			w.write(("    %s - [%d] - %s - 12 - 31  : End Of The Year\n") % (d11.strftime("%j"),(c.weekday(y400,12,31)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,31)]))
-			w.write(("    %s - [%d] - %s - 1 - 1  : Start Of January %04d [MONTH 1]\n") % (d1a.strftime("%j"),(c.weekday(y400+1,1,1)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400+1,1,1)],(y10k+1)%10000))
-			w.write(("    %s - [%d] - %s - 1 - 1  : New Year's Day %04d\n") % (d1a.strftime("%j"),(c.weekday(y400+1,1,1)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400+1,1,1)],(y10k+1)%10000))
 
 		
 
@@ -1923,51 +1902,51 @@ with open(fname,'w') as w:
 			centdiv4 = century//4 
 			calib = 2-century+centdiv4
 			d1 = 36525*(y1+4716)//100
-			e = 3601 * (month+1) // 10000
+			e = 306001 * (month+1) // 10000
 			f = calib + d + d1 + e - 1525
 			
 			jddiv = (f - 2451549)
-			ddiv = (jddiv*7499183//281882250)
-			dmod = (jddiv * 7499183) % 281882250
-			dic = (dmod/7499183)
-			resultdiv = (ddiv + 1749) // 12
-			resultmod0 = (ddiv + 1749) % 12
+			ddiv = (jddiv*70499183//2081882250)
+			dmod = (jddiv * 70499183) % 2081882250
+			dic = (dmod/70499183)
+			resultdiv = (ddiv + 17049) // 12
+			resultmod0 = (ddiv + 17049) % 12
 
 
 
 			if resultdiv >= 0:
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 0) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 11):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 0) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 11):
 					if resultmod0 == 11:
 						w.write(("\n    %s - [%d] - %s - %d - %d  : Month 1  [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(resultdiv+1) % (10**64),dic))
 					else:
 						w.write(("\n    %s - [%d] - %s - %d - %d  : Month 1  [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 1) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 0):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 1) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 0):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 2 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 2) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 1):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 2) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 1):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 3 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 3) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 2):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 3) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 2):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 4 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 4) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 3):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 4) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 3):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 5 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 5) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 4):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 5) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 4):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 6 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 6) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 5):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 6) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 5):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 7 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 7) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 6):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 7) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 6):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 8 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 8) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 7):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 8) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 7):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 9 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 9) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 8):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 9) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 8):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 10 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 10) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 9):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 10) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 9):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 11 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 11) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 10):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 11) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 10):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 12 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64),dic))
 
 
 			
 			elif resultdiv <= -1:
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 0) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 11):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 0) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 11):
 					if resultmod0 == 11:
 						if resultdiv + 1 < 0:
 							w.write(("\n    %s - [%d] - %s - %d - %d  : Month 1 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(resultdiv+1) % (10**64) - 10**64,dic))
@@ -1975,27 +1954,27 @@ with open(fname,'w') as w:
 							w.write(("\n    %s - [%d] - %s - %d - %d  : Month 1 [H] %04d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(resultdiv+1) % (10**64),dic))
 					else:
 						w.write(("\n    %s - [%d] - %s - %d - %d  : Month 1 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv  % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 1) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 0):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 1) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 0):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 2 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 2) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 1):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 2) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 1):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 3 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 3) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 2):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 3) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 2):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 4 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 4) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 3):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 4) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 3):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 5 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 5) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 4):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 5) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 4):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 6 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 6) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 5):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 6) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 5):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 7 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 7) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 6):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 7) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 6):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 8 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 8) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 7):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 8) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 7):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 9 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 9) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 8):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 9) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 8):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 10 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 10) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 9):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 10) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 9):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 11 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
-				if (dic >= 0 and dic <= 6 + (28169441/7499183) and resultmod0 == 11) or (dic >= 19546394/7499183 and dic < (281882250/7499183) and resultmod0 == 10):
+				if (dic >= 0 and dic <= 6 + (28169441/70499183) and resultmod0 == 11) or (dic >= 1905046394/70499183 and dic < (2081882250/70499183) and resultmod0 == 10):
 					w.write(("\n    %s - [%d] - %s - %d - %d  : Month 12 [H] %05d  [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,resultdiv % (10**64) - 10**64,dic))
 
 		def lunar_bc(y400,m,d):
@@ -2012,29 +1991,29 @@ with open(fname,'w') as w:
 			centdiv4 = century//4 
 			calib = 2-century+centdiv4
 			d1 = 36525*(y1+4716)//100
-			e = 3601 * (month+1) // 10000
+			e = 306001 * (month+1) // 10000
 			f = calib + d + d1 + e - 1525
 			
 
 
 			jddiv = (f - 2451549)
-			ddiv = (jddiv*7499183//281882250)
-			dmod = (jddiv * 7499183) % 281882250
-			dic = (dmod/7499183)
+			ddiv = (jddiv*70499183//2081882250)
+			dmod = (jddiv * 70499183) % 2081882250
+			dic = (dmod/70499183)
 			
 			
 			
-			if ((dic >= 0 and dic <= 5 + (28169441/7499183)) or (dic >= 1834547211/7499183 and dic < (281882250/7499183))) and (1 <= m <= 2):
-				w.write(("    %s - [%d] - %s - %d - %d  : Chinese New Year's Day [HD] %04d [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(y164+2698)%10**64,dic))
+			if ((dic >= 0 and dic <= 5 + (28169441/70499183)) or (dic >= 1834547211/70499183 and dic < (2081882250/70499183))) and (1 <= m <= 2):
+				w.write(("    %s - [%d] - %s - %d - %d  : Chinese New Year's Day [HD] %04d [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(y1064+2698)%10**64,dic))
 
-			if (dic >= 10 + (34661693/7499183) and dic <= 19 + (28169441/7499183) and (5 <= m <= 6)):
-				w.write(("    %s - [%d] - %s - %d - %d  : Vesak Day [HD] %04d [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(y164+2698)%10**64,dic))
+			if (dic >= 10 + (34661693/70499183) and dic <= 19 + (28169441/70499183) and (5 <= m <= 6)):
+				w.write(("    %s - [%d] - %s - %d - %d  : Vesak Day [HD] %04d [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(y1064+2698)%10**64,dic))
 				
-			if (dic >= 10 + (34661693/7499183) and dic <= 19 + (28169441/7499183) and (9 <= m <= 10)):
-				w.write(("    %s - [%d] - %s - %d - %d  : Chinese Mid-Autumn's Day [HD] %04d [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(y164+2698)%10**64,dic))
+			if (dic >= 10 + (34661693/70499183) and dic <= 19 + (28169441/70499183) and (9 <= m <= 10)):
+				w.write(("    %s - [%d] - %s - %d - %d  : Chinese Mid-Autumn's Day [HD] %04d [%s]\n") % ((day_of_year_list.strftime("%j")),(c.weekday(y400,m,d)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,m,d)],m,d,(y1064+2698)%10**64,dic))
 
 
-		w.write("Note : All year value(s) in mod 10^64 (!) Except In Section I. Chinese Calendar is forced to use HuangDi! Where Year 0000 C.E = [HD] 2697 - 2698\n\n")
+		w.write("Note (Below):\n\nAll year value(s) in mod 10^64 (!)\n\nExcept In Section I. Chinese Calendar is forced to use HuangDi! Where Year 0000 C.E = [HD] 2697 - 2698\n\n")
 		w.write("\n\n\nI. Most Notable Observance(s) (Not All Shown, And Some Are Experimental):\n\n\n\n")
 		
 		c_000(y)		
@@ -2046,13 +2025,12 @@ with open(fname,'w') as w:
 		
 		w.write(("    %s - [%d] - %s - 12 - 24  : Christmas Eve\n") % ((dt.datetime(2000+y400,12,24).strftime("%j")),(c.weekday(y400,12,24)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,24)]))
 		w.write(("    %s - [%d] - %s - 12 - 25  : Christmas Day\n") % ((dt.datetime(2000+y400,12,25).strftime("%j")),(c.weekday(y400,12,25)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,25)]))
-		w.write(("    %s - [%d] - %s - 12 - 26  : Seven Days After Christmas, Day 1\n") % ((dt.datetime(2000+y400,12,26).strftime("%j")),(c.weekday(y400,12,26)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,26)]))
-		w.write(("    %s - [%d] - %s - 12 - 27  : Seven Days After Christmas, Day 2\n") % ((dt.datetime(2000+y400,12,27).strftime("%j")),(c.weekday(y400,12,27)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,27)]))
-		w.write(("    %s - [%d] - %s - 12 - 28  : Seven Days After Christmas, Day 3\n") % ((dt.datetime(2000+y400,12,28).strftime("%j")),(c.weekday(y400,12,28)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,28)]))
-		w.write(("    %s - [%d] - %s - 12 - 29  : Seven Days After Christmas, Day 4\n") % ((dt.datetime(2000+y400,12,29).strftime("%j")),(c.weekday(y400,12,29)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,29)]))
-		w.write(("    %s - [%d] - %s - 12 - 30  : Seven Days After Christmas, Day 5\n") % ((dt.datetime(2000+y400,12,30).strftime("%j")),(c.weekday(y400,12,30)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,30)]))
-		w.write(("    %s - [%d] - %s - 12 - 31  : Seven Days After Christmas, Day 6\n") % ((dt.datetime(2000+y400,12,31).strftime("%j")),(c.weekday(y400,12,31)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,31)]))
-		w.write(("    %s - [%d] - %s - 1 - 1  : Seven Days After Christmas, Day 7 (At Next Year)\n") % ((dt.datetime(2000+y400+1,1,1).strftime("%j")),(c.weekday(y400+1,1,1)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400+1,1,1)]))
+		w.write(("    %s - [%d] - %s - 12 - 26  : Six Days After Christmas, Day 1\n") % ((dt.datetime(2000+y400,12,26).strftime("%j")),(c.weekday(y400,12,26)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,26)]))
+		w.write(("    %s - [%d] - %s - 12 - 27  : Six Days After Christmas, Day 2\n") % ((dt.datetime(2000+y400,12,27).strftime("%j")),(c.weekday(y400,12,27)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,27)]))
+		w.write(("    %s - [%d] - %s - 12 - 28  : Six Days After Christmas, Day 3\n") % ((dt.datetime(2000+y400,12,28).strftime("%j")),(c.weekday(y400,12,28)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,28)]))
+		w.write(("    %s - [%d] - %s - 12 - 29  : Six Days After Christmas, Day 4\n") % ((dt.datetime(2000+y400,12,29).strftime("%j")),(c.weekday(y400,12,29)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,29)]))
+		w.write(("    %s - [%d] - %s - 12 - 30  : Six Days After Christmas, Day 5\n") % ((dt.datetime(2000+y400,12,30).strftime("%j")),(c.weekday(y400,12,30)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,30)]))
+		w.write(("    %s - [%d] - %s - 12 - 31  : Six Days After Christmas, Day 6\n") % ((dt.datetime(2000+y400,12,31).strftime("%j")),(c.weekday(y400,12,31)+2-week_system_ordinal)%7+1,c.day_abbr[c.weekday(y400,12,31)]))
 
 		w.write("\n\n\n\nIII. Chinese New Year Observance (1 - 20 To 2 - 21 Method) :\n\n")
 	
@@ -2153,27 +2131,27 @@ with open(fname,'w') as w:
 
 
 clear()
-print("-"*a)
+print("-"*41)
 print("\nGenerated! See ---> {} In The Same Folder As This Code!".format(fname))
 print("\n\nCycle Output Mode ---> %d (%s)" % (cycle_format,cf[cycle_format]))
 if type(year) == int:
 	if year == 1:
-		print("\n\nDigit Group ---> 1 (Forced 0000 - 009)")
+		print("\n\nDigit Group ---> 1 (Forced 0000 - 0009)")
 	elif year == 2:
-		print("\n\nDigit Group ---> 2 (Forced 0000 - 099)")
+		print("\n\nDigit Group ---> 2 (Forced 0000 - 0099)")
 	elif year == 3:
-		print("\n\nDigit Group ---> 3 (Forced 0000 - 999)")
+		print("\n\nDigit Group ---> 3 (Forced 0000 - 0999)")
 	elif year == 4:
 		print("\n\nDigit Group ---> 4 (Normal 0000 - 9999)")
 	else:
 		print("\n\nDigit Group ---> %d (Adjusted By Number Of Digits)" % (year))
 elif type(year) == str:
 	if e_real == 1:
-		print("\n\nDigit Group ---> 1 (Forced 0000 - 009)")
+		print("\n\nDigit Group ---> 1 (Forced 0000 - 0009)")
 	elif e_real == 2:
-		print("\n\nDigit Group ---> 2 (Forced 0000 - 099)")
+		print("\n\nDigit Group ---> 2 (Forced 0000 - 0099)")
 	elif e_real == 3:
-		print("\n\nDigit Group ---> 3 (Forced 0000 - 999)")
+		print("\n\nDigit Group ---> 3 (Forced 0000 - 0999)")
 	elif e_real == 4:
 		print("\n\nDigit Group ---> 4 (Normal 0000 - 9999)")
 	else:
@@ -2205,7 +2183,7 @@ if show_grid_calendar == 1:
 else:
 	print("\n\nShow Grid-Based Calendar ---> No")
 print("\n\nProcessed In ---> %d : %02d\n" % ((end-start)//60,(end-start)%60))
-print("-"*a)
+print("-"*41)
 input("\n\nPress Enter To Exit!")
 if plat == 'Windows':
 	os.system('cls')

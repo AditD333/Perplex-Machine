@@ -196,7 +196,7 @@ with open('2_super_cycle.txt','w') as occ:
 	occ.write("\n\n\nYear(s) Per Cycle ---> %d\n" % (a))
 	occ.write(f"\n\n\nElement <X - #> ---> {b:0>{len(str(a-1))}}\n")
 	occ.write("\n\n\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
-	occ.write("\n\n\nTargetted Month ---> %d\n" % (month))
+	occ.write("\n\n\nTargetted Month ---> %d %s\n" % (month,c.month_name[month]))
 	if date_group == 1:
 		if month == 2:
 			occ.write("\n\n\nTargetted Dates---> 1, 8, 15, 22 [29 for leap-year(s) only]\n\n\n\n\n\n\n\n")
@@ -651,7 +651,7 @@ print("\nYear(s) Per Cycle ---> %d\n" % (a))
 print(f"\nElement <X - #> ---> {b:0>{len(str(a-1))}}\n")
 print("\nTargetted Super-Cycle Phase Index ---> %d\n" % (super_cycle_index))
 print("\nWeek System ---> [%s] %s\n" % (week_system.upper(),dlis[ord(week_system.upper())-65]))
-print("\nTargetted Month ---> %d\n" % (month))
+print("\nTargetted Month ---> %d %s\n" % (month,c.month_name[month]))
 if date_group == 1:
 	if month == 2:
 		print("\nTargetted Dates---> 1, 8, 15, 22. [29 for leap-year(s) only]\n")
